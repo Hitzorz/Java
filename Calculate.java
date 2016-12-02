@@ -25,7 +25,7 @@ public class Calculate{
 	}
         
 	else {
-        System.out.println("Недопустимая **** операция!!!");
+        System.out.println("РќРµРґРѕРїСѓСЃС‚РёРјР°СЏ РѕРїРµСЂР°С†РёСЏ");
 	}
      }
 }
