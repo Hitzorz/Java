@@ -34,13 +34,13 @@ public static void main(String[] args) throws IOException{
 		System.out.println("Enter first arg:");
 		first = Double.parseDouble(reader.readLine());
 		}
-		System.out.println("Enter second arg:");
-		second = Double.parseDouble(reader.readLine());
-		calc.applyChoice(first, second);
-		System.out.println(form.format(calc.getResult()));
-		System.out.println("Do you wanna continue? yes/no");
-		continueWork = reader.readLine();
-		count++;
-		}
+	System.out.println("Enter second arg:");
+	second = Double.parseDouble(reader.readLine());
+	calc.applyChoice(first, second);
+	System.out.println(form.format(calc.getResult()));
+	System.out.println("Do you wanna continue? yes/no");
+	continueWork = reader.readLine();
+	count++;
 	}
+}
 }
