@@ -1,87 +1,62 @@
+import java.text.DecimalFormat;
 public class Calculate{
       
  public static void main(String[] arg){
      
-	int first = Integer.parseInt(arg[0]);
-	int second = Integer.parseInt(arg[2]);
-        Operations oper = new Operations();
+	double first = Double.parseDouble(arg[0]);
+	double second = Double.parseDouble(arg[2]);
+        Calculate calc = new Calculate();
+	DecimalFormat format = new DecimalFormat();
+
+
       
 	if (arg[1].equals("+")){
-          System.out.println(oper.sum(first, second));
+          System.out.printf("%.0f \n",calc.sum(first, second));
  	  
         }
 	
 	else if (arg[1].equals("-")){
-          System.out.println(oper.difference(first, second));
+          System.out.printf("%.0f \n",calc.difference(first, second));
           
         }
         
 	else if (arg[1].equals("/")){
-           System.out.println(oper.division(first, second));
+           System.out.printf("%.0f \n",calc.division(first, second));
 	}
 	
 	else if (arg[1].equals("*")){
-	   System.out.println(oper.multiplication(first, second));
+	   System.out.printf(format.format(calc.multiplication(first, second)));
 	}
 
 	else if (arg[1].equals("^")){
-		if(second >= 0){
-			System.out.printf("%.0f \n",oper.power(first, second));
-		}
-		else{ 
-	        System.out.println(oper.power(first, second));
-		}
-	        }
-	
-        
+	        System.out.printf("%.0f \n",calc.power(first, second));
+	}
+	                
 	else {
-        System.out.println("РќРµРґРѕРїСѓСЃС‚РёРјР°СЏ РѕРїРµСЂР°С†РёСЏ");
+        System.out.println("Недопустимая операция");
 	}
      }
-}
- class Operations{
 
-public int sum(int a, int b){
+public double sum(double a, double b){
    return a+b;
 }
 
-public  int difference(int a, int b){
+public  double difference(double a, double b){
    return a - b;
 }
 
-public double division(int a, int b){
-   return (double) a / b ;
+public double division(double a, double b){
+   return  a / b ;
 }
 
-public int multiplication(int a, int b){
+public double multiplication(double a, double b){
    return a * b;
 }
 
-public double power(int a, int b){
-     double result = 0;
-     if ( b == 0 ){
-        result = 1;
-     }   
-
-     if ( b == 1 ){
-	result = a;
-     }
-
-     if ( b > 1 ){
-	result = a;
-	for ( int i = 0; i < b-1; i++){
-		result = result * a;     
-	}
-     }
-	
-     if ( b < 0){
-        result = a;
-	for ( int i = b; i < -1; i++){
-		result = result * a;
-	}
-	result = 1.0 / result ;
+public double power(double a, double b){
+     return Math.pow(a, b);
 }
-return result ;
-}
+
+
 
 }
