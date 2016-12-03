@@ -33,7 +33,7 @@ public class Calculator {
 	}
 	// Применение варианта вычисления
 	public void applyChoice(double a, double b) throws IOException{
-		here:
+		
 		switch(getChoice()){
 			case ("+"):
 				add(a, b);
