@@ -3,28 +3,25 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 public class Calculator {
       // Результат вычисления 
-	private double result = 0;
+	private  double result ;
 	// Cложение
 	public void add(double a, double b){
-		this.result = a + b;
-		
+		 this.result = a + b;	
 	}
 	// Умножение
-	public void multi(double a, double b){
+	public void multi( double a,  double b){
 		this.result = a * b;
 	}
 	// Вычитание
 	public void diff(double a, double b){
-		this.result = a - b;
-		
+		this.result = a - b ;	
 	}
 	// Деление
 	public void division(double a, double b){
-		this.result = a / b;
-		
+		this.result = a / b;	
 	}
 	//Возведение в степень
-	public void power(double a, double b){
+	public void power(double a, double b){ 
 		this.result = Math.pow(a, b);
 	}
 	// Получить результат

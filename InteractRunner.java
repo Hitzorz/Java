@@ -6,47 +6,49 @@ import java.io.InputStreamReader;
 
 
 public class InteractRunner{
-	
+	static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	static final DecimalFormat form = new DecimalFormat("#.#################");
+	private String continueWork="";
+	private String useLastResult="";
+	private double useResult;
+	private double first;
+	private double second;
+      static final Calculator calc = new Calculator();
+	static final InteractRunner inter = new InteractRunner();
 public static void main(String[] args) throws IOException{
-	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	Calculator calc = new Calculator();
-	DecimalFormat form = new DecimalFormat("#.#################");
+	
 	form.setDecimalSeparatorAlwaysShown(false);
-      String continueWork="";
-	String useLastResult="";
-	int count = 0;
-	double result;
-	double first;
-	double second;
-	// Продолжать работу, пока не будет получеy ответ "no"
-	while(!continueWork.equals("no")){
-		//если производилось хоть одно вычисление,
-		// предложить использовать результат последнего
-		if (count > 0){
-			System.out.println("Do you want to use the last result? yes/no");
-		      useLastResult = reader.readLine();
-		}
-		//Запрос предыдущего результата и
-		//использование в качестве первого аргумента
-            if(useLastResult.equals("yes")){
-			result = calc.getResult();
-			first = result;
-			System.out.println("1st arg = : " + form.format(result));
-			calc.cleanResult();
-		}
-		else{
-		calc.cleanResult();
-		System.out.println("Enter first arg:");
-		first = Double.parseDouble(reader.readLine());
-		}
-	System.out.println("Enter second arg:");
-	second = Double.parseDouble(reader.readLine());
-	calc.applyChoice(first, second);
-	System.out.println(form.format(calc.getResult()));
-	System.out.println(calc.getResult());
-	System.out.println("Do you wanna continue? yes/no");
-	continueWork = reader.readLine();
-	count++;
+      int count = 0;
+	while(!inter.continueWork.equals("no")){
+		inter.getArgs(count, calc.getResult());
+		calc.applyChoice(inter.first, inter.second);
+		System.out.println(form.format(calc.getResult()));
+		System.out.println("Do you wanna continue? yes/no");
+		inter.continueWork = reader.readLine();
+		count++;	
 	}
+	reader.close();
 }
+
+public void getArgs(int count, double result)throws IOException{
+	//если производилось хоть одно вычисление,
+	// предложить использовать результат последнего
+	if (count > 0){
+		System.out.println("Do you want to use the last result? yes/no");
+		this.useLastResult = reader.readLine();
+	}
+	//Если "YES" -  запрос предыдущего результата и
+	//его использование  в качестве первого аргумента
+      if(this.useLastResult.equals("yes")){
+		this.first = result;
+		System.out.println("1st arg = : " + form.format(this.first));	
+	} else{
+		System.out.println("Enter first arg:");
+		this.first = Double.parseDouble(reader.readLine());
+	    }	
+	System.out.println("Enter second arg:");
+	this.second = Double.parseDouble(reader.readLine());
+	
+}
+
 }
