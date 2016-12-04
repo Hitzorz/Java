@@ -23,6 +23,10 @@ public class Calculator {
 		this.result = a / b;
 		
 	}
+	//Возведение в степень
+	public void power(double a, double b){
+		this.result = Math.pow(a, b);
+	}
 	// Получить результат
 	public double getResult(){
 		return this.result;
@@ -31,7 +35,7 @@ public class Calculator {
 	public void cleanResult(){
 		this.result = 0;
 	}
-	// Применение варианта вычисления
+	// Выполнение выбранного действия
 	public void applyChoice(double a, double b) throws IOException{
 		
 		switch(getChoice()){
@@ -47,14 +51,17 @@ public class Calculator {
 			case ("/"):
 				division(a, b);
 				break;
+			case ("^"):
+				power(a,b);
+				break;
 			default: System.out.println("No such action");
 				   applyChoice(a, b);
 		}
 	}
-	// Выбор вычисления
+	// Выбор действия пользователем
 	public String getChoice() throws IOException {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Choose action : +,-,*,/ ");
+		System.out.println("Choose action : +,-,*,/,^ ");
 			return reader.readLine(); 
 	}
 }

@@ -10,7 +10,7 @@ public class InteractRunner{
 public static void main(String[] args) throws IOException{
 	BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	Calculator calc = new Calculator();
-	DecimalFormat form = new DecimalFormat("#.#");
+	DecimalFormat form = new DecimalFormat("#.#################");
 	form.setDecimalSeparatorAlwaysShown(false);
       String continueWork="";
 	String useLastResult="";
@@ -18,11 +18,16 @@ public static void main(String[] args) throws IOException{
 	double result;
 	double first;
 	double second;
+	// Продолжать работу, пока не будет получеy ответ "no"
 	while(!continueWork.equals("no")){
+		//если производилось хоть одно вычисление,
+		// предложить использовать результат последнего
 		if (count > 0){
 			System.out.println("Do you want to use the last result? yes/no");
 		      useLastResult = reader.readLine();
-		}		
+		}
+		//Запрос предыдущего результата и
+		//использование в качестве первого аргумента
             if(useLastResult.equals("yes")){
 			result = calc.getResult();
 			first = result;
@@ -38,6 +43,7 @@ public static void main(String[] args) throws IOException{
 	second = Double.parseDouble(reader.readLine());
 	calc.applyChoice(first, second);
 	System.out.println(form.format(calc.getResult()));
+	System.out.println(calc.getResult());
 	System.out.println("Do you wanna continue? yes/no");
 	continueWork = reader.readLine();
 	count++;
