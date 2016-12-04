@@ -18,7 +18,7 @@ public static void main(String[] args) throws IOException{
 	double result;
 	double first;
 	double second;
-	// Продолжать работу, пока не будет получеy ответ "no"
+	// Продолжать работу, пока не будет получен ответ "no"
 	while(!continueWork.equals("no")){
 		//если производилось хоть одно вычисление,
 		// предложить использовать результат последнего
