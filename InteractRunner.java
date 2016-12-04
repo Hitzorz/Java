@@ -8,15 +8,14 @@ import java.io.InputStreamReader;
 public class InteractRunner{
 	static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	static final DecimalFormat form = new DecimalFormat("#.#################");
+      static final Calculator calc = new Calculator();
+	static final InteractRunner inter = new InteractRunner();
 	private String continueWork="";
 	private String useLastResult="";
 	private double useResult;
 	private double first;
 	private double second;
-      static final Calculator calc = new Calculator();
-	static final InteractRunner inter = new InteractRunner();
 public static void main(String[] args) throws IOException{
-	
 	form.setDecimalSeparatorAlwaysShown(false);
       int count = 0;
 	while(!inter.continueWork.equals("no")){
