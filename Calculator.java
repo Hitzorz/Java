@@ -2,40 +2,43 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 public class Calculator {
-      // Результат вычисления 
+      
 	private  double result ;
-	// Cложение
+	
 	public void add(double a, double b){
 		 this.result = a + b;	
 	}
-	// Умножение
+	
 	public void multi( double a,  double b){
 		this.result = a * b;
 	}
-	// Вычитание
+	
 	public void diff(double a, double b){
 		this.result = a - b ;	
 	}
-	// Деление
+
 	public void division(double a, double b){
 		this.result = a / b;	
 	}
-	//Возведение в степень
+	
 	public void power(double a, double b){ 
 		this.result = Math.pow(a, b);
 	}
-	// Получить результат
+	
 	public double getResult(){
 		return this.result;
 	}
-	// Очистить результат
+	
 	public void cleanResult(){
 		this.result = 0;
 	}
-	// Выполнение выбранного действия
-	public void applyChoice(double a, double b) throws IOException{
+	/** Do operation that user choosed
+	*@param a - the first argument			 
+	*@param b - second argument
+	*@param reader - BufferedReader from InteractRunner class 	*/
+	public void applyChoice(double a, double b, BufferedReader reader) throws IOException{
 		
-		switch(getChoice()){
+		switch(getChoice(reader)){
 			case ("+"):
 				add(a, b);
 				break;
@@ -52,12 +55,12 @@ public class Calculator {
 				power(a,b);
 				break;
 			default: System.out.println("No such action");
-				   applyChoice(a, b);
+				   applyChoice(a, b, reader);
 		}
 	}
-	// Выбор действия пользователем
-	public String getChoice() throws IOException {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	/** Get operation to do from user
+	*@param reader BufferedReader from main*/							
+	public String getChoice(BufferedReader reader) throws IOException {
 		System.out.println("Choose action : +,-,*,/,^ ");
 			return reader.readLine(); 
 	}
